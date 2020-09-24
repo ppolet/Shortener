@@ -8,7 +8,7 @@ import java.util.Map;
 import shortener.StorageStrategy;
 
 public class HashMapStorageStrategy implements StorageStrategy{
-    private HashMap<Long, String> data;     // В нем будут храниться наши данные.
+    private HashMap<Long, String> data = new HashMap<>();     // В нем будут храниться наши данные.
 
     @Override
     public boolean containsKey(Long key) {
