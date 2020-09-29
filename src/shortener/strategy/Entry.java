@@ -6,10 +6,10 @@ import java.util.Objects;
 
 //7
 public class Entry implements Serializable{
-    private Long key;
-    private String value;
-    private Entry next;
-    private int hash;
+    Long key;
+    String value;
+    Entry next;
+    int hash;
 
     public Entry(int hash, Long key, String value, Entry next) {
         this.hash = hash;

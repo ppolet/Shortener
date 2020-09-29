@@ -17,6 +17,25 @@ public class OurHashMapStorageStrategy implements StorageStrategy{
         return k.hashCode();
     }
     
+    //позиция в массиве, куда будет помещен элемент.
+    public int indexFor(int hash, int length){
+        return hash & (length - 1);
+    }
+    
+    //возвращает entry в соответствии с key
+    public Entry getEntry(Long key){
+        int hash = (key == null) ? 0 : hash(key);
+        for (Entry e = table[indexFor(hash, table.length)];
+             e != null;
+             e = e.next) {
+            Object k;
+            if (e.hash == hash &&
+                ((k = e.key) == key || (key != null && key.equals(k))))
+                return e;
+        }
+        return null;
+    }
+            
     @Override
     public boolean containsKey(Long key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
