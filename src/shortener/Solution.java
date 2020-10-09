@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import shortener.strategy.HashMapStorageStrategy;
+import shortener.strategy.OurHashMapStorageStrategy;
 
 public class Solution {
     public static Set<Long> getIds(Shortener shortener, Set<String> strings){
@@ -60,5 +61,9 @@ public class Solution {
         //6.2.4
         Helper.printMessage("--- HashMapStorageStrategy ---");
         testStrategy(new HashMapStorageStrategy(), 10000);
+
+        System.out.println();
+        Helper.printMessage("--- OurHashMapStorageStrategy ---");
+        testStrategy(new OurHashMapStorageStrategy(), 10000);
     }
 }
