@@ -38,8 +38,7 @@ public class FileBucket {
     
     //должен сериализовывать переданный entry в файл. Учти, каждый entry может содержать еще один entry.
     public void putEntry(Entry entry){
-        try {
-            ObjectOutputStream ob = new ObjectOutputStream(Files.newOutputStream(path));
+        try (ObjectOutputStream ob = new ObjectOutputStream(Files.newOutputStream(path))){
             ob.writeObject(entry);
         } catch (IOException ex) {
             ExceptionHandler.log(ex);
@@ -50,12 +49,12 @@ public class FileBucket {
     public Entry getEntry(){
         Entry entry = null;
         
-        try {
-            ObjectInputStream ob = new ObjectInputStream(Files.newInputStream(path));
+        try (ObjectInputStream ob = new ObjectInputStream(Files.newInputStream(path))){
             if (getFileSize()>0){
                 entry = (Entry)ob.readObject();
             }
-        } catch (IOException | ClassNotFoundException ex) {
+        } catch (Exception ex) {
+            System.out.print("---- ");
             ExceptionHandler.log(ex);
         }
         

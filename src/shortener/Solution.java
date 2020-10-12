@@ -4,6 +4,7 @@ package shortener;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import shortener.strategy.FileStorageStrategy;
 import shortener.strategy.HashMapStorageStrategy;
 import shortener.strategy.OurHashMapStorageStrategy;
 
@@ -65,5 +66,9 @@ public class Solution {
         System.out.println();
         Helper.printMessage("--- OurHashMapStorageStrategy ---");
         testStrategy(new OurHashMapStorageStrategy(), 10000);
+
+        System.out.println();
+        Helper.printMessage("--- FileStorageStrategy ---");
+        testStrategy(new FileStorageStrategy(), 1);
     }
 }
